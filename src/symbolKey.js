@@ -1,0 +1,1 @@
+export const topNavImg = Symbol();
