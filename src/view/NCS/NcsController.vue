@@ -1,5 +1,5 @@
 <template>
-  <TopNavDefault />
+  <TopNavDefault option="my" />
   <NCSContainer>
     <router-view class="view NCSed-content"> </router-view>
   </NCSContainer>
