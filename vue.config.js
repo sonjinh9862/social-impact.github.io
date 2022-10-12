@@ -12,6 +12,13 @@ module.exports = {
   assetsDir: process.env.BASE_URL,
   devServer: {
     contentBase: path.join(__dirname, ""),
+    proxy: {
+      "/": {
+        target: "https://openapi.map.naver.com",
+        changeOrigin: true,
+        pathRewrite: { "^/": "" },
+      },
+    },
   },
   outputDir: "docs",
 };
