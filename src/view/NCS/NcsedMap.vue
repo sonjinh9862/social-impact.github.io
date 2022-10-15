@@ -4,7 +4,7 @@
       <ContentContainer>
         <StyledSearchBar />
         <ScrollDiv :scrollValue="isScrolled">
-          <TabDiv @click="isScrolled == 200 ? scrolling(700) : scrolling(200)">
+          <TabDiv @click="isScrolled == 30 ? scrolling(70) : scrolling(30)">
             <TabBar />
           </TabDiv>
           <ContentTitle>오늘의 추천 맛집</ContentTitle>
@@ -61,7 +61,7 @@ const ScrollDiv = styled("div")`
   position: absolute;
   z-index: 101;
   width: 100%;
-  height: ${(props) => props.scrollValue + "px"};
+  height: ${(props) => props.scrollValue + "vh"};
   border-top-right-radius: 30px;
   border-top-left-radius: 30px;
   background-color: #ffffff;
@@ -99,7 +99,7 @@ const Store = styled.div`
   align-items: center;
   padding: 15px 30px 35px 30px;
   flex-wrap: wrap;
-  overflow: ${(props) => (props.scrollValue == 200 ? "hidden" : "scroll")};
+  overflow: ${(props) => (props.scrollValue == 30 ? "hidden" : "scroll")};
   gap: 20px;
 `;
 
@@ -135,7 +135,7 @@ export default {
         console.log(err);
       });
 
-    const isScrolled = ref(200);
+    const isScrolled = ref(30);
     const scrolling = (scrollValue) => {
       isScrolled.value = scrollValue;
     };

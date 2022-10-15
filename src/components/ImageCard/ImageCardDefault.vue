@@ -1,6 +1,6 @@
 <template>
   <Container>
-    <StyledImage :src="src" width="150" />
+    <StyledImage :src="src" width="18vh" />
     <Title> {{ title }} </Title>
     <Explain> {{ explain }} </Explain>
   </Container>
