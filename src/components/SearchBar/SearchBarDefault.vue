@@ -10,13 +10,12 @@ import styled from "vue3-styled-components";
 import Image from "@/components/Image";
 
 const Container = styled("div")`
-  position: absolute;
-  box-sizing: border-box;
-  width: 100%;
-  z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  box-sizing: border-box;
+  margin: 20px 30px;
+  z-index: 1;
   padding: 17px 20px;
   background-color: #ffffff;
   border-radius: 10px;
