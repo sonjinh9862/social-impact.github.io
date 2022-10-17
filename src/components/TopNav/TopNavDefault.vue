@@ -27,6 +27,9 @@ const Container = styled("div")`
     props.borderLine == "top-bottom" ? "1px solid #e0e0e0" : ""};
   box-sizing: border-box;
   flex-grow: 1;
+  position: fixed;
+  top: 0;
+  z-index: 10;
 `;
 
 const Title = styled("div")`
