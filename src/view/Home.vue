@@ -1,6 +1,6 @@
 <template>
   <Container>
-    <Date>10월 첫째주</Date>
+    <Date>10월 넷째주</Date>
     <AppTitleArea>
       <SubTitle>오!동네 통합 멤버십</SubTitle>
       <AppTitle> 오.<b>동.통!</b> </AppTitle>
@@ -11,6 +11,7 @@
       <CardButtonLong
         :title="`이번 주\n살찌는\n멤버십.`"
         explain="새로운 멤버쉽이 업데이트 됐어요!"
+        @click="pushRouter('/membership')"
       />
       <SubCardArea>
         <CardButtonDefault
@@ -25,6 +26,16 @@
         />
       </SubCardArea>
     </CardArea>
+    <WeekTitle>이번 주 내가 다녀온 멤버십</WeekTitle>
+    <Week>
+      <BenefitCardHalf
+        v-for="card in cardList"
+        :key="card"
+        :storeName="card.storeName"
+        :storeBenefit="card.storeBenefit"
+        :color="card.color"
+      />
+    </Week>
   </Container>
 </template>
 
@@ -34,6 +45,7 @@ import CardButtonLong from "@/components/CardButton/CardButtonLong";
 import CardButtonDefault from "@/components/CardButton/CardButtonDefault";
 import { reactive } from "vue";
 import { useRouter } from "vue-router";
+import BenefitCardHalf from "@/components/BenefitCard/BenefitCardHalf";
 
 const Container = styled("div")`
   display: flex;
@@ -102,6 +114,23 @@ const SubCardArea = styled("div")`
   width: 45%;
 `;
 
+const Week = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow: scroll;
+  padding: 0 10px 0 10px;
+`;
+
+const WeekTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 20px;
+  color: #797979;
+  margin: 90px 24px 18px 24px;
+`;
+
 export default {
   components: {
     Container,
@@ -115,6 +144,9 @@ export default {
     AppTitle,
     ExplainTitle,
     Notice,
+    Week,
+    WeekTitle,
+    BenefitCardHalf,
   },
   name: "Home",
   props: {},
@@ -142,12 +174,43 @@ export default {
       },
     ]);
 
+    const cardList = reactive([
+      {
+        storeName: "카레집",
+        storeBenefit: "10%",
+      },
+      {
+        storeName: "카레집",
+        storeBenefit: "음료수 1캔",
+      },
+      {
+        storeName: "카레집",
+        storeBenefit: "돈까스 무료",
+        color: "#FFCF88",
+      },
+      {
+        storeName: "카레집",
+        storeBenefit: "20%",
+        color: "#FFCF88",
+      },
+      {
+        storeName: "카레집",
+        storeBenefit: "30%",
+        color: "#904DC5",
+      },
+      {
+        storeName: "카레집",
+        storeBenefit: "35%",
+        color: "#904DC5",
+      },
+    ]);
+
     const router = useRouter();
     const pushRouter = (toRoutePath) => {
       router.push({ path: toRoutePath });
     };
 
-    return { ...props, cards, pushRouter };
+    return { ...props, cards, cardList, pushRouter };
   },
 };
 </script>
