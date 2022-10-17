@@ -1,8 +1,8 @@
 <template>
   <Container :borderLine="borderLine">
-    <Image :src="navigator" :width="10" />
+    <Image :src="navigator" :width="10" @click="goHome" />
     <Title> 오! <b>동</b>네 <b>통</b>합 멤버십 </Title>
-    <Option>
+    <Option v-if="option">
       <Image src="MyIcon" :width="15" />
       <OptionText>MY</OptionText>
     </Option>
@@ -12,6 +12,7 @@
 <script>
 import styled from "vue3-styled-components";
 import Image from "@/components/Image";
+import { useRouter } from "vue-router";
 
 const Container = styled("div")`
   display: flex;
@@ -70,7 +71,14 @@ export default {
     },
   },
   setup(props) {
-    return { ...props };
+    const router = useRouter();
+    const goHome = () => {
+      router.push({
+        name: "Home",
+      });
+    };
+
+    return { ...props, goHome };
   },
 };
 </script>
